@@ -27,30 +27,8 @@ kind: Service
 metadata:
   name: wil42-service
 spec:
+  ports:
+  - port: 8888
+    targetPort: 8888
   selector:
     app: wil42-app
-  ports:
-    - protocol: TCP
-      port: 8888
-      targetPort: 8888
-  type: ClusterIP
-
-# ---
-
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: my-ingress
-#   namespace: dev
-# spec:
-#   ingressClassName: traefik
-#   rules:
-#     http:
-#       paths:
-#       - pathType: Prefix
-#         path: "/"
-#         backend:
-#           service:
-#             name: wil42-service
-#             port:
-#               number: 8888
